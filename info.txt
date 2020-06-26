@@ -1,0 +1,10 @@
+Simplified coading
+==================
+
+What is Coroutine?
+A coroutine is a concurrency design pattern that you can use on Android to simplify code that execute asynchronously
+
+Problem: calling API and update api
+Solution: AsyncTask, Callback(Retrofit), Coroutine
+
+suspend means?
