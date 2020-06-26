@@ -8,11 +8,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface MyApi {
+//    @GET("quotes")
+//    fun getQuotes() : Call<QuotesResponse>
+
     @GET("quotes")
-    fun getQuotes() : Call<QuotesResponse>
+    suspend fun getQuotes(): Response<QuotesResponse>
 
     companion object {
-        operator fun invoke() : MyApi {
+        operator fun invoke(): MyApi {
             return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl("https://api.simplifiedcoding.in/course-apis/mvvm/")

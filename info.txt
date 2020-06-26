@@ -7,4 +7,16 @@ A coroutine is a concurrency design pattern that you can use on Android to simpl
 Problem: calling API and update api
 Solution: AsyncTask, Callback(Retrofit), Coroutine
 
+can minimize lines of code
+
 suspend means?
+
+built in scope
+//lifecyclescope
+//viewmodelscope
+//Globalscope // Never use this for production application
+//Custom scope can also made
+
+Dispatchers.IO // network, read, write
+Main // Main safetly
+Default // CPU intensive task
