@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.ransoft.androidcoroutines.R
@@ -53,17 +54,17 @@ class QuotesFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         binding.recyclerviewQuotes.adapter = quotesAdapter
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            getQuotes()
-        }
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            getQuotes()
+//        }
 
 //        launch {
 //            quotesAdapter.quotes = getQuotes()
 //        }
-    }
 
-    private suspend fun getQuotes(): List<Quote>? {
-        return withContext(Dispatchers.IO) { MyApi().getQuotes().body()?.quotes }
+        viewModel.quotes.observe(viewLifecycleOwner, Observer {
+            quotesAdapter.quotes = it
+        })
     }
 
 //    private fun getQuotes() {
